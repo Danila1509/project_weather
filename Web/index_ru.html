@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css">
+	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+	<title>Прогноз погоды 4 дня</title>
+</head>
+
+<body id="B">
+	<div id="p_prldr">
+		<div class="contpre"><span class="svg_anm"></span></div>
+	</div>
+	<div id="local">
+		<ul class="select3"><span id="sel">Выберите язык</span>
+			<li class="first1"><a href="index_ua.html">Русский<img style="float:right" src="flag_rossiya.jpg" width="40"
+						height="20" /></a></li>
+			<li class="first1"><a href="index_ua.html">Украинский<img style="float:right" src="flag_ukraina.jpg"
+						width="40" height="20" /></a></li>
+		</ul>
+		<div class="jumbotron">
+			<h2 style="font-size:18px !important;">Местное время и дата</h2>
+			<p>Сегодня: <strong><span id="date"></span></strong></p>
+			<p id="timeOuT">Текущее время: <strong><span id="time"></span></strong></p>
+
+			<h2>Погода для</h2>
+			<p><span id="city-text" style="font-size:22px;color:#0f3961;"></span><br>
+				<span id="city-text2"></span><br>
+				<span id="city-text3"></span><br>
+				<span id="city-text4"></span><br>
+				<span id="city-text5"></span><br>
+				<span id="city-text6"></span>
+			</p>
+		</div>
+		<div class="row">
+			<div id="weather">
+				<img src="" id="weatherImg" class="center-block">
+				<h3 id="weather-text" style="color:#FF66FF;"></h3>
+			</div>
+			<div id="temp">
+				<h3 style="font-size:18px !important;color:#fff;">Температура<br><span style="font-size: 14px;">Кликните
+						по знаку температуры,<br> щтобы изменить C на F</span></h3>
+				<h3><span id="temp-text"></span> <span id="tempMode">C&deg</span></h3>
+			</div>
+			<div id="wind">
+				<p style="font-size:18px !important;color:#fff;">Скорость ветра</p>
+				<p id="wind-text" style="font-size:16px !important;"></p>
+				<br>или<br>
+				<p id="wind-text2" style="font-size:16px !important;"></p>
+
+			</div>
+			<div class="col-md-4" id="pressure">
+				<p style="font-size:18px !important;color:#fff;">Атмосферное давление</p>
+				<p id="wind-text3" style="font-family:Open Sans;font-size:16px !important;"></p>
+			</div>
+			<div class="col-md-4" id="humidity">
+				<p style="font-size:18px !important;color:#fff;">Относительная влажность</p>
+				<p id="wind-text4" style="font-size:16px !important;"></p>
+
+			</div>
+		</div>
+
+		<div class="left">
+			<div id="pole">
+				<h2>Введите название города</h2>
+				<p>*на любом языке</p>
+				<p>Например: <span style="color:green; font-size:16px;">Kharkiv-Харків-Харьков, Kyiv-Київ-Киев,
+						Tokio-Токіо-Токио, <br>Moscow-Москва, Saint Petersburg--Санкт-Петербург--Санкт-Петербург,
+						Tver-Твер-Тверь ...</span></p>
+				<input type="text" value="" id="city" placeholder="Введите название города..." />
+				<button id="cityB" onclick="showDateTime();">OK</button>
+			</div>
+			
+
+
+
+			<div class="text-center" style="width:90%;margin-left:5%; background: url('cloud1_result.webp');"><span
+					id="OUT1">Вы выбрали: </span><span id="selected"></span><br><em><span id="selected2"></span><span
+						id="adress"></span></em><br><span id="OUT1">Прогноз на 4 дня </span><br><span id="cityC"></span>
+			</div>
+			<div id="tablo">
+				<div class="day">
+					<img src="" id="tmp24" /><br>
+					<p id="day21">Сейчас</p>
+					<div id="demo27"></div>
+					<div id="demo125"></div>
+					<div id="demo26"></div>
+					<div id="demo24"></div>
+				</div>
+				<div class="day">
+					<img id="tmp4" /><br>
+					<div id="demo71"></div>
+					<p id="day1"></p>
+					<div id="demo7"></div>
+					<div id="demo5"></div>
+					<div id="demo6"></div>
+					<div id="demo4"></div>
+				</div>
+
+				<div class="day">
+					<img id="tmp5" /><br>
+					<div id="demo72"></div>
+					<p id="day2"></p>
+					<div id="demo10"></div>
+					<div id="demo11"></div>
+					<div id="demo8"></div>
+					<div id="demo9"></div>
+				</div>
+
+				<div class="day">
+					<img id="tmp6" /><br>
+					<div id="demo73"></div>
+					<p id="day3"></p>
+					<div id="demo14"></div>
+					<div id="demo15"></div>
+					<div id="demo12"></div>
+					<div id="demo13"></div>
+				</div>
+
+				<div class="day">
+					<img id="tmp7" /><br>
+					<div id="demo74"></div>
+					<p id="day4"></p>
+					<div id="demo18"></div>
+					<div id="demo19"></div>
+					<div id="demo16"></div>
+					<div id="demo17"></div>
+				</div>
+				<p class="p" style="width:100%;">Карта <a href="https://leafletjs.com/" target="_blank">Leaflet</a> по
+					точным координатам с использованием API <a href="https://nominatim.org/" target="_blank">
+						Nominatim</a><br> (если получен однозначный результат поиска)</p>
+				<div id="map2" style="height:500px;width:80%;"></div>
+				<div id="mapsShow"
+					style="border-radius:4px;box-shadow: 0 0 5px rgba(0,0,0,0.5); overflow: hidden; margin: 15px auto; width: 100%;">
+					<p>Фрейм <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> при
+						множественном выборе</p>
+					<iframe scrolling="no" seamless="seamless" src=""
+						sandbox="allow-same-origin || allow-top-navigation || allow-forms || allow-scripts"
+						style="border: 0px none; margin-left: 0px; height: 812px; margin-top: 0px; margin-bottom: -110px;width: 100%;div {display:none;}">Ваш
+						браузер не поддерживает встроенные фреймы!
+					</iframe>
+				</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="js5_ru.js"></script>
+		<script>
+			$(".select3").click(function () {
+				$("li").slideToggle('fast');
+			});
+		</script>
+</body>
+
+</html>
