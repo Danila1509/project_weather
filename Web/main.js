@@ -43,7 +43,7 @@ var znakRU = ['Пасмурно','Чистое небо','Небольшая о�
 
 	   
 $('#cityB').on('click', function(){
-	$('#tablo').css('display','flex');
+	$('.tablo__inner').css('display','flex');
 	$('#mapsShow').css('display','block');
 	$('#adress').css('display','block');
     $('.p').css('display','block');
@@ -124,7 +124,7 @@ L.marker(center).addTo(map2);
                     error : function(e) {
                         console.log("Error");
 						$('#cityC').html('<p style="color:red";>ERROR</p><p style="color:#bef7f1";>Проверьте корректность названия</p>');
-						$('#tablo').css('display','none');
+						$('.tablo__inner').css('display','none');
 						$('#map2').css('display','none');
 		                $('#OUT1').css('display','none');
 		                $('#OUT11').css('display','none');
