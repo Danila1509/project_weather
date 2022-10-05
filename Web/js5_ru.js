@@ -4,11 +4,6 @@ $(window).on('load', function () {
     $svg_anm.fadeOut();
     $preloader.delay(200).fadeOut('slow');
 });
-$( ".select" ).click(function(){ 
-	    $( "li").slideToggle('fast'); 
-	  });
-	  
-	  
 $(".first ").hover(function () {
     $(this).find("#select2 li").toggle('fast');
   });
